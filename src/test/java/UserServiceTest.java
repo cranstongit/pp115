@@ -56,6 +56,25 @@ public class UserServiceTest {
     }
 
     @Test
+    public void changeAge() {
+        try {
+            userService.dropUsersTable();
+            userService.createUsersTable();
+            userService.saveUser(testName, testLastName, testAge);
+
+            userService.changeAgeById(1L, (byte) 27);
+
+            User user = userService.getAllUsers().get(0);
+
+            if (user.getAge() == testAge) {
+                Assert.fail("Возраст User небыл изменен");
+            }
+        } catch (Exception e) {
+            Assert.fail("При изменении возраста пользователя произошло исключение\n" + e);
+        }
+    }
+
+    @Test
     public void removeUserById() {
         try {
             userService.dropUsersTable();
@@ -98,5 +117,7 @@ public class UserServiceTest {
             Assert.fail("При тестировании очистки таблицы пользователей произошло исключение\n" + e);
         }
     }
+
+
 
 }
