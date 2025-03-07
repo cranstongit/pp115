@@ -1,16 +1,21 @@
 package jm.task.core.jdbc.dao;
 
-import com.mysql.cj.Session;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
+import org.hibernate.SessionFactory;
 
-import javax.transaction.Transaction;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
+
+//    Util util = Util.getInstance();
+//    static SessionFactory sessionFactory = null; //Ментор оставил замечание "Вынести SessionFactory в поле класса дао"
+
     public UserDaoHibernateImpl() {
 
     }
+
+
 
 
     @Override
